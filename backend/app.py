@@ -210,52 +210,51 @@ def webhook():
 
         print("Webhook received:")
         print(payload)
-        print(payload.keys())
 
-        deal = payload.get("deal", {})
+        print(payload.keys())
 
         formatted_deal = {
 
-    "name":
-    payload.get("deal_name"),
+            "name":
+            payload.get("deal_name"),
 
-    "amount":
-    payload.get("deal_amount"),
+            "amount":
+            payload.get("deal_amount"),
 
-    "stage":
-    payload.get("deal_deal_stage_name"),
+            "stage":
+            payload.get("deal_deal_stage_name"),
 
-    "probability":
-    payload.get("deal_cf_deal_probablity"),
+            "probability":
+            payload.get("deal_cf_deal_probablity"),
 
-    "risk_level":
-    payload.get("deal_cf_deal_probablity"),
+            "risk_level":
+            payload.get("deal_cf_deal_probablity"),
 
-    "updated_at":
-    payload.get("deal_updated_at")
+            "updated_at":
+            payload.get("deal_updated_at")
 
-}
+        }
 
         crm_deals.append(formatted_deal)
 
-supabase.table("crm_deals").insert(
-    formatted_deal
-).execute()
+        supabase.table("crm_deals").insert(
+            formatted_deal
+        ).execute()
 
         print("Stored CRM Deals:")
         print(crm_deals)
 
-        response = supabase.table(
-    "crm_deals"
-).select("*").execute()
+        return jsonify({
 
-return jsonify({
+            "success": True,
 
-    "success": True,
+            "message":
+            "Webhook received",
 
-    "deals": response.data
+            "stored_deals":
+            len(crm_deals)
 
-})
+        })
 
     except Exception as e:
 
@@ -266,6 +265,7 @@ return jsonify({
             "error": str(e)
 
         }), 500
+
         crm_deals.append(formatted_deal)
 
         print("Stored CRM Deals:")
