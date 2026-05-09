@@ -205,29 +205,55 @@ def webhook():
 
         deal = payload.get("deal", {})
 
-formatted_deal = {
+        formatted_deal = {
 
-    "name":
-    deal.get("name"),
+            "name":
+            deal.get("name"),
 
-    "amount":
-    deal.get("amount"),
+            "amount":
+            deal.get("amount"),
 
-    "stage":
-    deal.get("deal_stage_id"),
+            "stage":
+            deal.get("deal_stage_id"),
 
-    "probability":
-    deal.get("probability"),
+            "probability":
+            deal.get("probability"),
 
-    "risk_level":
-    deal.get("custom_field", {})
-        .get("cf_deal_probablity"),
+            "risk_level":
+            deal.get("custom_field", {})
+                .get("cf_deal_probablity"),
 
-    "updated_at":
-    deal.get("updated_at")
+            "updated_at":
+            deal.get("updated_at")
 
-}
+        }
 
+        crm_deals.append(formatted_deal)
+
+        print("Stored CRM Deals:")
+        print(crm_deals)
+
+        return jsonify({
+
+            "success": True,
+
+            "message":
+            "Webhook received",
+
+            "stored_deals":
+            len(crm_deals)
+
+        })
+
+    except Exception as e:
+
+        return jsonify({
+
+            "success": False,
+
+            "error": str(e)
+
+        }), 500
         crm_deals.append(formatted_deal)
 
         print("Stored CRM Deals:")
