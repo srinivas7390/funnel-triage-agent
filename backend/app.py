@@ -215,16 +215,16 @@ def webhook():
     payload.get("deal_amount"),
 
     "stage":
-    payload.get("deal_stage"),
+    payload.get("deal_deal_stage_name"),
 
     "probability":
-    payload.get("deal_probability"),
+    payload.get("deal_cf_deal_probablity"),
 
     "risk_level":
-    payload.get("deal_risk_level"),
+    payload.get("deal_cf_deal_probablity"),
 
     "updated_at":
-    payload.get("updated_at")
+    payload.get("deal_updated_at")
 
 }
 
