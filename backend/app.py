@@ -68,8 +68,7 @@ Return ONLY valid JSON.
 
 Format:
 
-{
- {
+{{
     "strategic_insight": "...",
 
     "executive_insight": "...",
@@ -222,7 +221,6 @@ def webhook():
     payload.get("updated_at")
 
 }
-        }
 
         crm_deals.append(formatted_deal)
 
