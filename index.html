@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Revenue Pipeline Intelligence Hub
+</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2>🚀 WATI RevTech</h2>
+
+<div class="sidebar-section">
+
+<h3>Funnel Triage Agent</h3>
+
+<p>
+AI-assisted pipeline prioritization
+for GTM leaders.
+</p>
+
+</div>
+
+<div class="sidebar-section">
+
+<h4>Capabilities</h4>
+
+<ul>
+
+<li>Dynamic ICP Analysis</li>
+
+<li>Deal Momentum Scoring</li>
+
+<li>Buying Intent Detection</li>
+
+<li>WhatsApp-native GTM Logic</li>
+
+<li>Executive AI Insights</li>
+
+</ul>
+
+</div>
+
+<div class="sidebar-section">
+
+<label>
+Upload Pipeline CSV
+</label>
+
+<input
+type="file"
+id="csvFile"
+accept=".csv"
+>
+
+</div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div class="main-content">
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+<div>
+
+<h1>
+Revenue Pipeline Intelligence Hub
+</h1>
+
+<p>
+AI-Assisted Funnel Prioritization
+& Risk Detection
+</p>
+
+</div>
+
+<button id="analyzeBtn">
+Analyze Pipeline
+</button>
+
+</div>
+
+<!-- KPI GRID -->
+
+<div class="kpi-grid">
+
+<div class="kpi-card">
+
+<div class="kpi-label">
+Total Pipeline
+</div>
+
+<div class="kpi-value">
+$0
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-label">
+High Priority
+</div>
+
+<div class="kpi-value">
+0
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-label">
+At-Risk Deals
+</div>
+
+<div class="kpi-value">
+0
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-label">
+Avg Deal Score
+</div>
+
+<div class="kpi-value">
+0
+</div>
+
+</div>
+
+<div class="kpi-card">
+
+<div class="kpi-label">
+Pipeline Health
+</div>
+
+<div class="kpi-value">
+Healthy
+</div>
+
+</div>
+
+</div>
+
+<!-- STRATEGIC INSIGHT -->
+
+<div class="insight-box">
+
+<h3>Strategic Insight</h3>
+
+<p id="strategicInsight">
+
+Upload pipeline data to
+generate strategic insight.
+
+</p>
+
+</div>
+
+<!-- EXECUTIVE INSIGHT -->
+
+<div class="summary-card">
+
+<h2>
+🧠 Executive Insight
+</h2>
+
+<div id="summaryText">
+
+Upload a CSV and click
+Analyze Pipeline.
+
+</div>
+
+</div>
+
+<!-- TABS -->
+
+<div class="tabs">
+
+<button
+class="tab-button active"
+data-tab="summaryTab"
+>
+
+Executive Summary
+
+</button>
+
+<button
+class="tab-button"
+data-tab="dealTab"
+>
+
+Deal Prioritization
+
+</button>
+
+<button
+class="tab-button"
+data-tab="riskTab"
+>
+
+Risks & Actions
+
+</button>
+
+</div>
+
+<!-- SUMMARY TAB -->
+
+<div
+id="summaryTab"
+class="tab-content active-tab"
+>
+
+<div class="content-card">
+
+<h2>
+Pipeline Overview
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Company</th>
+
+<th>Industry</th>
+
+<th>Stage</th>
+
+<th>Score</th>
+
+<th>Priority</th>
+
+<th>Channel</th>
+
+</tr>
+
+</thead>
+
+<tbody id="pipelineTable">
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<!-- DEAL TAB -->
+
+<div
+id="dealTab"
+class="tab-content"
+>
+
+<div class="content-card">
+
+<h2>
+🔥 Deal Prioritization
+</h2>
+
+<div id="dealInsights">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RISKS TAB -->
+
+<div
+id="riskTab"
+class="tab-content"
+>
+
+<div class="action-grid">
+
+    <div class="content-card">
+
+<h2>
+🚨 Risky Deals
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Company</th>
+
+<th>Stage</th>
+
+<th>Risk</th>
+
+<th>Score</th>
+
+</tr>
+
+</thead>
+
+<tbody id="riskyDealsTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- RISKS -->
+
+<div class="content-card">
+
+<h2>
+⚠️ Risks
+</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Risk ID</th>
+
+<th>Risk Insight</th>
+
+</tr>
+
+</thead>
+
+<tbody id="riskInsights">
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- ACTIONS -->
+
+<div class="content-card">
+
+<h2>
+🚀 Recommended Actions
+</h2>
+
+<ul id="actionInsights">
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
