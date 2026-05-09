@@ -207,26 +207,25 @@ def webhook():
 
         formatted_deal = {
 
-            "name":
-            deal.get("name"),
+    "name":
+    payload.get("deal_name"),
 
-            "amount":
-            deal.get("amount"),
+    "amount":
+    payload.get("deal_amount"),
 
-            "stage":
-            deal.get("deal_stage_id"),
+    "stage":
+    payload.get("deal_stage"),
 
-            "probability":
-            deal.get("probability"),
+    "probability":
+    payload.get("deal_probability"),
 
-            "risk_level":
-            deal.get("custom_field", {})
-                .get("cf_deal_probablity"),
+    "risk_level":
+    payload.get("deal_risk_level"),
 
-            "updated_at":
-            deal.get("updated_at")
+    "updated_at":
+    payload.get("updated_at")
 
-        }
+}
 
         crm_deals.append(formatted_deal)
 
