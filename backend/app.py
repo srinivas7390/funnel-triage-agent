@@ -190,7 +190,39 @@ Rules:
             "error": str(e)
 
         }), 500
+# ==========================================
+# FRESHWORKS WEBHOOK
+# ==========================================
 
+@app.route("/webhook", methods=["POST"])
+def webhook():
+
+    try:
+
+        payload = request.json
+
+        print("Webhook received:")
+
+        print(payload)
+
+        return jsonify({
+
+            "success": True,
+
+            "message":
+            "Webhook received"
+
+        })
+
+    except Exception as e:
+
+        return jsonify({
+
+            "success": False,
+
+            "error": str(e)
+
+        }), 500
 # ==========================================
 # HEALTH CHECK
 # ==========================================
