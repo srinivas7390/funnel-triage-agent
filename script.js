@@ -1,3 +1,74 @@
+async function loadCRMDeals() {
+
+    try {
+
+        var response = await fetch(
+
+            "https://funnel-triage-backend.onrender.com/crm-deals"
+
+        );
+
+        var result = await response.json();
+
+        if (result.success) {
+
+            pipelineData = [];
+
+            for (
+                var i = 0;
+                i < result.deals.length;
+                i++
+            ) {
+
+                var deal =
+                    result.deals[i];
+
+                pipelineData.push({
+
+                    Company:
+                    deal.name,
+
+                    Amount:
+                    deal.amount,
+
+                    Stage:
+                    deal.stage,
+
+                    Score:
+                    calculateScore(
+                        deal
+                    ),
+
+                    Priority:
+                    calculatePriority(
+                        deal
+                    ),
+
+                    Risk:
+                    calculateRisk(
+                        deal
+                    )
+
+                });
+
+            }
+
+            renderTable(
+                pipelineData
+            );
+
+            updateKPIs();
+
+        }
+
+    }
+    catch (error) {
+
+        console.log(error);
+
+    }
+
+}
 var pipelineData = [];
 
 var csvFileInput = document.getElementById("csvFile");
