@@ -204,25 +204,24 @@ def webhook():
         print("Webhook received:")
         print(payload)
 
-        deal = payload.get("deal", {})
-
         formatted_deal = {
 
-            "name":
-            deal.get("name"),
+    "name":
+    payload.get("deal_name"),
 
-            "amount":
-            deal.get("amount"),
+    "amount":
+    payload.get("deal_amount"),
 
-            "stage":
-            deal.get("stage_name"),
+    "stage":
+    payload.get("deal_stage"),
 
-            "probability":
-            deal.get("probability"),
+    "probability":
+    payload.get("deal_probability"),
 
-            "updated_at":
-            deal.get("updated_at")
+    "updated_at":
+    payload.get("updated_at")
 
+}
         }
 
         crm_deals.append(formatted_deal)
