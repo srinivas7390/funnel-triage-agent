@@ -5,7 +5,7 @@ import os
 import json
 
 app = Flask(__name__)
-
+crm_deals = []
 CORS(app)
 
 client = OpenAI(
@@ -202,15 +202,43 @@ def webhook():
         payload = request.json
 
         print("Webhook received:")
-
         print(payload)
+
+        deal = payload.get("deal", {})
+
+        formatted_deal = {
+
+            "name":
+            deal.get("name"),
+
+            "amount":
+            deal.get("amount"),
+
+            "stage":
+            deal.get("stage_name"),
+
+            "probability":
+            deal.get("probability"),
+
+            "updated_at":
+            deal.get("updated_at")
+
+        }
+
+        crm_deals.append(formatted_deal)
+
+        print("Stored CRM Deals:")
+        print(crm_deals)
 
         return jsonify({
 
             "success": True,
 
             "message":
-            "Webhook received"
+            "Webhook received",
+
+            "stored_deals":
+            len(crm_deals)
 
         })
 
@@ -223,6 +251,22 @@ def webhook():
             "error": str(e)
 
         }), 500
+
+       
+ # ==========================================
+# GET CRM DEALS
+# ==========================================
+
+@app.route("/crm-deals", methods=["GET"])
+def get_crm_deals():
+
+    return jsonify({
+
+        "success": True,
+
+        "deals": crm_deals
+
+    })
 # ==========================================
 # HEALTH CHECK
 # ==========================================
