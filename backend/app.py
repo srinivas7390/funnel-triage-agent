@@ -1,11 +1,19 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from openai import OpenAI
+from supabase import create_client
 import os
 import json
 
 app = Flask(__name__)
 crm_deals = []
+supabase = create_client(
+
+    os.getenv("SUPABASE_URL"),
+
+    os.getenv("SUPABASE_KEY")
+
+)
 CORS(app)
 
 client = OpenAI(
@@ -230,20 +238,24 @@ def webhook():
 
         crm_deals.append(formatted_deal)
 
+supabase.table("crm_deals").insert(
+    formatted_deal
+).execute()
+
         print("Stored CRM Deals:")
         print(crm_deals)
 
-        return jsonify({
+        response = supabase.table(
+    "crm_deals"
+).select("*").execute()
 
-            "success": True,
+return jsonify({
 
-            "message":
-            "Webhook received",
+    "success": True,
 
-            "stored_deals":
-            len(crm_deals)
+    "deals": response.data
 
-        })
+})
 
     except Exception as e:
 
