@@ -203,22 +203,28 @@ def webhook():
         print("Webhook received:")
         print(payload)
 
-        formatted_deal = {
+        deal = payload.get("deal", {})
+
+formatted_deal = {
 
     "name":
-    payload.get("deal_name"),
+    deal.get("name"),
 
     "amount":
-    payload.get("deal_amount"),
+    deal.get("amount"),
 
     "stage":
-    payload.get("deal_stage"),
+    deal.get("deal_stage_id"),
 
     "probability":
-    payload.get("deal_probability"),
+    deal.get("probability"),
+
+    "risk_level":
+    deal.get("custom_field", {})
+        .get("cf_deal_probablity"),
 
     "updated_at":
-    payload.get("updated_at")
+    deal.get("updated_at")
 
 }
 
