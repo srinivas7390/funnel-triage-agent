@@ -202,6 +202,7 @@ def webhook():
 
         print("Webhook received:")
         print(payload)
+        print(payload.keys())
 
         deal = payload.get("deal", {})
 
