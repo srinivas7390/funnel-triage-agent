@@ -25,33 +25,45 @@ async function loadCRMDeals() {
 
                 pipelineData.push({
 
-                    Company:
-                    deal.name,
+                        Company:
+                        deal.name,
 
-                    Industry:
-                    "SaaS",
+                        Industry:
+                        deal.industry || "Unknown",
 
-                    Deal_Size:
-                    parseInt(deal.amount || 0),
+                        Deal_Size:
+                        parseInt(deal.amount || 0),
 
-                    Stage:
-                    deal.stage || "Discovery",
+                        Stage:
+                        deal.stage || "Discovery",
 
-                    Days_in_Stage:
-                    5,
+                        Days_in_Stage:
+                        parseInt(
+                            deal.days_in_stage || 0
+                        ),
 
-                    Last_Activity_Days:
-                    2,
+                        Last_Activity_Days:
+                        parseInt(
+                            deal.last_activity_days || 0
+                        ),
 
-                    Decision_Maker_Engaged:
-                    "Yes",
+                        Decision_Maker_Engaged:
 
-                    Region:
-                    "India",
-                    CRM_Probability:
-deal.probability || "Medium"
+                            deal.decision_maker_engaged
+                            ? "Yes"
+                            : "No",
 
-                });
+                        Region:
+                        deal.region || "Unknown",
+
+                        CRM_Probability:
+                        deal.probability || "Medium"
+
+
+
+                        });
+
+               
 
             }
 
