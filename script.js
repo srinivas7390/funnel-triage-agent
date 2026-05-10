@@ -141,6 +141,8 @@ function processPipelineData() {
         row.Channel = recommendChannel(row);
 
         row.Risk = calculateRisk(row);
+        row.Next_Action =
+    suggestNextAction(row);
 
     }
 
@@ -352,6 +354,55 @@ function calculateRisk(row) {
     return "Healthy";
 
 }
+function suggestNextAction(row) {
+
+    if (
+
+        row.Risk === "⚠️ At Risk" &&
+
+        row.Last_Activity_Days > 7
+
+    ) {
+
+        return "Re-engage dormant stakeholder";
+
+    }
+
+    if (
+
+        row.Stage === "Negotiation" &&
+
+        row.Score >= 75
+
+    ) {
+
+        return "Schedule executive follow-up";
+
+    }
+
+    if (
+
+        row.Decision_Maker_Engaged === "No"
+
+    ) {
+
+        return "Identify decision maker";
+
+    }
+
+    if (
+
+        row.Stage === "Proposal"
+
+    ) {
+
+        return "Follow up on proposal feedback";
+
+    }
+
+    return "Continue standard follow-up";
+
+}
 
 // ==========================================
 // PIPELINE TABLE
@@ -385,6 +436,10 @@ function renderTable(data) {
             "<td>" + row.Score + "</td>" +
 
             "<td>" + row.Priority + "</td>" +
+            
+            "<td>" + row.Risk + "</td>" +
+
+            "<td>" + row.Next_Action + "</td>" +
 
             "<td>" + row.Channel + "</td>";
 
