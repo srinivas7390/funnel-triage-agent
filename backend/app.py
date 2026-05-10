@@ -215,25 +215,50 @@ def webhook():
 
         formatted_deal = {
 
-            "name":
-            payload.get("deal_name"),
+    "name":
+    payload.get("deal_name"),
 
-            "amount":
-            payload.get("deal_amount"),
+    "amount":
+    payload.get("deal_amount"),
 
-            "stage":
-            payload.get("deal_deal_stage_name"),
+    "stage":
+    payload.get("deal_deal_stage_name"),
 
-            "probability":
-            payload.get("deal_cf_deal_probablity"),
+    "probability":
+    payload.get(
+        "deal_cf_deal_probablity"
+    ),
 
-            "risk_level":
-            payload.get("deal_cf_deal_probablity"),
+    "risk_level":
+    payload.get(
+        "deal_cf_deal_probablity"
+    ),
 
-            "updated_at":
-            payload.get("deal_updated_at")
+    "updated_at":
+    payload.get("deal_updated_at"),
 
-        }
+    "industry":
+    payload.get("deal_cf_industry"),
+
+    "region":
+    payload.get("deal_cf_region"),
+
+    "decision_maker_engaged":
+    payload.get(
+        "deal_cf_decision_maker_engaged"
+    ),
+
+    "last_activity_days":
+    payload.get(
+        "deal_cf_last_activity_days"
+    ),
+
+    "days_in_stage":
+    payload.get(
+        "deal_cf_days_in_stage"
+    )
+
+}
 
         crm_deals.append(formatted_deal)
 
