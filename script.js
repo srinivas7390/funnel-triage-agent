@@ -25,39 +25,35 @@ async function loadCRMDeals() {
 
                 pipelineData.push({
 
-                    Company:
-                    deal.name,
+                 Company:
+                 deal.name,
 
-                    Amount:
-                    deal.amount,
+                 Industry:
+                 "SaaS",
 
-                    Stage:
-                    deal.stage,
+                 Deal_Size:
+                 parseInt(deal.amount || 0),
 
-                    Score:
-                    calculateScore(
-                        deal
-                    ),
+                 Stage:
+                 deal.stage || "Discovery",
 
-                    Priority:
-                    calculatePriority(
-                        deal
-                    ),
+                 Days_in_Stage:
+                  5,
 
-                    Risk:
-                    calculateRisk(
-                        deal
-                    )
+                 Last_Activity_Days:
+                     2,
 
-                });
+                 Decision_Maker_Engaged:
+                 "Yes",
+
+                 Region:
+                 "India"
+
+});
+processPipelineData();
 
             }
 
-            renderTable(
-                pipelineData
-            );
-
-            updateKPIs();
 
         }
 
