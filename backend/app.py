@@ -293,19 +293,22 @@ def webhook():
 
         }), 500
 
-       
- # ==========================================
+# ==========================================
 # GET CRM DEALS
 # ==========================================
 
 @app.route("/crm-deals", methods=["GET"])
 def get_crm_deals():
 
+    response = supabase.table(
+        "crm_deals"
+    ).select("*").execute()
+
     return jsonify({
 
         "success": True,
 
-        "deals": crm_deals
+        "deals": response.data
 
     })
 # ==========================================
