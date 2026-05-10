@@ -131,13 +131,14 @@ function processPipelineData() {
     }
 
     renderTable(pipelineData);
-updateKPIs();
+
+    updateKPIs();
+
     renderDealInsights();
 
-    renderRiskTable();
+    renderRiskyDeals();
 
 }
-
 // ==========================================
 // SCORE ENGINE
 // ==========================================
@@ -620,9 +621,15 @@ function updateKPIs() {
 
     }
 
-    var avgScore = Math.round(
+    var avgScore = 0;
+
+if (pipelineData.length > 0) {
+
+    avgScore = Math.round(
         totalScore / pipelineData.length
     );
+
+}
 
     var health = "Healthy";
 
