@@ -47,7 +47,9 @@ async function loadCRMDeals() {
                     "Yes",
 
                     Region:
-                    "India"
+                    "India",
+                    CRM_Probability:
+deal.probability || "Medium"
 
                 });
 
@@ -227,6 +229,20 @@ function calculateScore(row) {
         score -= 10;
 
     }
+    // CRM Probability Boost
+
+if (row.CRM_Probability === "High") {
+
+    score += 20;
+
+}
+else if (
+    row.CRM_Probability === "Medium"
+) {
+
+    score += 10;
+
+}
 
     return score;
 
